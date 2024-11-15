@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
+      "mainClass": "com.example.App",
+      "projectName": "demo",
+      "vmArgs": "-cp target/demo-1.0-SNAPSHOT.jar",
+      "cwd": "${workspaceFolder}", 
+      "args": []
+    }
+  ]
+}
