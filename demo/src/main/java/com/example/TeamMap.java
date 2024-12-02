@@ -81,11 +81,11 @@ public class TeamMap {
             case "phi eagles" -> normalizedTeamName = "philadelphia eagles";
             case "car panthers" -> normalizedTeamName = "carolina panthers";
             case "chi bears" -> normalizedTeamName = "chicago bears";
-            case "cin bengals" -> normalizedTeamName = "cincinatti bengals";
-            case "cle browns" -> normalizedTeamName = "cleveland bears";
+            case "cin bengals" -> normalizedTeamName = "cincinnati bengals";
+            case "cle browns" -> normalizedTeamName = "cleveland browns";
             case "dal cowboys" -> normalizedTeamName = "dallas cowboys";
             case "den broncos" -> normalizedTeamName = "denver broncos";
-            case "det lions" -> normalizedTeamName = "detriot lions";
+            case "det lions" -> normalizedTeamName = "detroit lions";
             case "gb packers" -> normalizedTeamName = "green bay packers";
             case "ind colts" -> normalizedTeamName = "indianapolis colts";
             case "lv raiders" -> normalizedTeamName = "las vegas raiders";
@@ -95,10 +95,10 @@ public class TeamMap {
             case "min vikings" -> normalizedTeamName = "minnesota vikings";
             case "ne patriots" -> normalizedTeamName = "new england patriots";
             case "no saints" -> normalizedTeamName = "new orleans saints";
-            case "pit steelrs" -> normalizedTeamName = "pittsburgh steelers";
+            case "pit steelers" -> normalizedTeamName = "pittsburgh steelers";
             case "tb buccaneers" -> normalizedTeamName = "tampa bay buccaneers";
-            case "ten titants" -> normalizedTeamName = "tennesee titans";
-            case "was commanders" -> normalizedTeamName = "washing commanders";
+            case "ten titans" -> normalizedTeamName = "tennessee titans";
+            case "was commanders" -> normalizedTeamName = "washington commanders";
             default -> {
             }
         }
@@ -111,16 +111,21 @@ public class TeamMap {
     public String getTeamId(String teamName) {
         String normalizedTeamName = normalizeTeamName(teamName);
         if (normalizedTeamName == null) {
+            System.out.println("Error: Team name is null or empty.");
             return null;
         }
     
-        System.out.println("Normalized team name for " + teamName + ": " + normalizedTeamName);  // Log normalized name
-        
-        // Log the entire teamMap for debugging
-        teamMap.forEach((key, value) -> System.out.println("Team in map: " + key + " -> " + value));
+        System.out.println("Normalized team name for input '" + teamName + "': " + normalizedTeamName);
+        String teamId = teamMap.get(normalizedTeamName);
     
-        return teamMap.get(normalizedTeamName);
+        if (teamId == null) {
+            System.out.println("Error: No mapping found for normalized team name: " + normalizedTeamName);
+        } else {
+            System.out.println("Found team ID: " + teamId + " for team: " + normalizedTeamName);
+        }
+        return teamId;
     }
+    
     
     
     

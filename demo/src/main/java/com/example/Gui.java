@@ -143,7 +143,7 @@ public class Gui extends JFrame {
             return;
         }
 
-        // Normalize team name (lowercase and trimmed)
+        // Normalized team name 
         String normalizedInput = teamName.toLowerCase().trim();
 
         // Get normalized name for logo files

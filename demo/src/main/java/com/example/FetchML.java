@@ -1,3 +1,4 @@
+
 package com.example;
 
 import java.net.URI;
@@ -13,7 +14,7 @@ import com.google.gson.JsonParser;
 
 public class FetchML {
 
-    private final String apiKey = "1AQ7jY07u8QvXd3cnhuDbYlRuVYNahKB"; 
+    private final String apiKey = "XXXXXXXXXXXXXXXXX"; 
     private TeamMap teamMap = new TeamMap();
 
     public Moneylines fetchMoneyLine(String teamNormalizedId) {
@@ -43,6 +44,8 @@ public class FetchML {
             return null;
         }
     }
+
+    //Method for parsing thru the API data to get the moneylines
     public Moneylines parseMoneyLine(JsonObject jsonObject, String teamId) {
         JsonArray events = jsonObject.getAsJsonArray("events");
     
@@ -105,7 +108,7 @@ public class FetchML {
             System.out.println("Home Flag Found: " + homeFlagFound);
             System.out.println("Away Flag Found: " + awayFlagFound);
     
-            // Handling edge case: If one team is flagged as home, the other should automatically be away.
+            // Handling edge case  If one team is flagged as home, the other should automatically be away.
             if (!homeFlagFound && awayFlagFound) {
                 System.out.println("One team is marked as away, assuming the other is home.");
                 homeTeamName = awayTeamName; // Swap teams since we have only the away flag
@@ -176,9 +179,9 @@ public class FetchML {
                             double homeMoneyLineValue = Double.parseDouble(homeMoneyLine);
     
                             // Skip invalid moneylines (e.g., 0.0001)
-                            if (awayMoneyLineValue == 0.0001 || homeMoneyLineValue == 0.0001 || awayMoneyLineValue == 0 || homeMoneyLineValue == 0) {
-                                System.out.println("Skipping invalid moneylines: Away = " + awayMoneyLine + ", Home = " + homeMoneyLine);
-                                continue;
+                           if (awayMoneyLineValue == 0.0001 || homeMoneyLineValue == 0.0001 || awayMoneyLineValue == 0 || homeMoneyLineValue == 0) {
+                             System.out.println("Skipping invalid moneylines: Away = " + awayMoneyLine + ", Home = " + homeMoneyLine);
+                               continue;
                             }
     
                             System.out.println("Processing: Away = " + awayMoneyLine + ", Home = " + homeMoneyLine + ", Affiliate = " + affiliateName);
